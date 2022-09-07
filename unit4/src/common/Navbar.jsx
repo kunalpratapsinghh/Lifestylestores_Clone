@@ -1,8 +1,8 @@
 import { AddIcon, PhoneIcon, SearchIcon } from "@chakra-ui/icons";
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import FoundationIcon from '@mui/icons-material/Foundation';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import FoundationIcon from "@mui/icons-material/Foundation";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -29,42 +29,61 @@ import React, { useContext, useState } from "react";
 import { Appcontext } from "../context/Appcontext";
 import Loginsignup from "../component/Loginsignup";
 import Cart from "../component/Cart";
-let item=[]
+let item = [];
 
 function Navbar() {
   let { isauth, handleauth, handlelogout } = useContext(Appcontext);
   const [isShown, setIsShown] = useState({ status: false, id: "" });
-  const [cartview ,setCartview]=useState(false)
-  const handlecartview=()=>{
-    setCartview(!cartview)
-  }
-  const {handledata}=useContext(Appcontext)
+
+  const [cartview, setCartview] = useState(false);
+
+  const handlecartview = () => {
+    setCartview(!cartview);
+  };
+  const { handledata } = useContext(Appcontext);
   return (
     <Box>
-      <Flex px="10%" color={"white"} bg="blackAlpha.800" fontFamily={"sans-serif"}>
-        <Box >
-          <Button leftIcon={<LocalShippingIcon />} variant="ghost" fontSize={"12px"}>
+      <Flex
+        px="10%"
+        color={"white"}
+        bg="blackAlpha.800"
+        fontFamily={"sans-serif"}
+      >
+        <Box>
+          <Button
+            leftIcon={<LocalShippingIcon />}
+            variant="ghost"
+            fontSize={"12px"}
+          >
             Free Shipping
           </Button>
         </Box>
         <Box>
-          <Button leftIcon={<FoundationIcon />} variant="ghost"  fontSize={"12px"}>
-           Click & Collect
+          <Button
+            leftIcon={<FoundationIcon />}
+            variant="ghost"
+            fontSize={"12px"}
+          >
+            Click & Collect
           </Button>
         </Box>
         <Box>
-          <Button leftIcon={<FoundationIcon />} variant="ghost" fontSize={"12px"}>
-           Return To Store
+          <Button
+            leftIcon={<FoundationIcon />}
+            variant="ghost"
+            fontSize={"12px"}
+          >
+            Return To Store
           </Button>
         </Box>
         <Spacer />
         <Box>
           <Button variant="ghost" fontSize={"12px"}>
-           Download Our Apps
+            Download Our Apps
           </Button>
         </Box>
         <Box>
-          <Button  variant="ghost" fontSize={"12px"}>
+          <Button variant="ghost" fontSize={"12px"}>
             Store Locator
           </Button>
         </Box>
@@ -73,7 +92,6 @@ function Navbar() {
             Help
           </Button>
         </Box>
-        
       </Flex>
 
       {/* /// */}
@@ -111,23 +129,36 @@ function Navbar() {
             </Link>
 
             <Link to={"/kids"}>
-              <Button variant="ghost" onMouseEnter={() =>
+              <Button
+                variant="ghost"
+                onMouseEnter={() =>
                   setIsShown({ ...isShown, status: true, id: "3" })
-                }>Kids</Button>
+                }
+              >
+                Kids
+              </Button>
             </Link>
-
 
             <Link to={"/shoes&bags"}>
-              <Button variant="ghost" onMouseEnter={() =>
+              <Button
+                variant="ghost"
+                onMouseEnter={() =>
                   setIsShown({ ...isShown, status: true, id: "4" })
-                }>Shoes & Bags</Button>
+                }
+              >
+                Shoes & Bags
+              </Button>
             </Link>
 
-
             <Link to={"/beauty"}>
-              <Button variant="ghost" onMouseEnter={() =>
+              <Button
+                variant="ghost"
+                onMouseEnter={() =>
                   setIsShown({ ...isShown, status: true, id: "5" })
-                }>Beauty</Button>
+                }
+              >
+                Beauty
+              </Button>
             </Link>
           </Flex>
 
@@ -137,7 +168,11 @@ function Navbar() {
                 pointerEvents="none"
                 children={<SearchIcon color="gray.300" />}
               />
-              <Input variant="filled" placeholder="What are you looking for?"w={350}/>
+              <Input
+                variant="filled"
+                placeholder="What are you looking for?"
+                w={350}
+              />
             </InputGroup>
           </Flex>
         </Flex>
@@ -154,14 +189,19 @@ function Navbar() {
           <Loginsignup isauth={isauth} />
 
           <Button variant="ghost" padding={"15px"} fontSize={"xl"}>
-           <FavoriteBorderIcon/>
+            <FavoriteBorderIcon />
           </Button>
-          <Button variant="ghost" padding={"15px"} fontSize={"xl"} onClick={handlecartview}>
-          <ShoppingCartIcon/>
+          <Button
+            variant="ghost"
+            padding={"15px"}
+            fontSize={"xl"}
+            onClick={handlecartview}
+          >
+            <ShoppingCartIcon />
           </Button>
         </Flex>
       </Flex>
-      
+
       {isauth.status && isShown.status && isShown.id === "1" ? (
         <Box
           w={"100%"}
@@ -176,15 +216,27 @@ function Navbar() {
           border={"0px solid red"}
         >
           <Flex direction="column" alignItems="flex-start">
-            <Link to="/products"><Button variant="ghost" onClick={()=>handledata("womenshirt")}>Shirt</Button></Link>
-            <Link to="/products"><Button variant="ghost"  onClick={()=>handledata("womentshirt")}>Tshirt</Button></Link>
-            <Link to="/products"><Button variant="ghost"  onClick={()=>handledata("womenjeans")}>Jeans</Button></Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("womenshirt")}>
+                Shirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("womentshirt")}>
+                Tshirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("womenjeans")}>
+                Jeans
+              </Button>
+            </Link>
           </Flex>
         </Box>
       ) : (
         <Box></Box>
       )}
-       {isauth.status && isShown.status && isShown.id === "2" ? (
+      {isauth.status && isShown.status && isShown.id === "2" ? (
         <Box
           w={"100%"}
           h={120}
@@ -198,15 +250,27 @@ function Navbar() {
           border={"0px solid red"}
         >
           <Flex direction="column" alignItems="flex-start">
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("menshirt")}>Shirt</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("mentshirt")}>Tshirt</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("menjeans")}>Jeans</Button></Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("menshirt")}>
+                Shirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("mentshirt")}>
+                Tshirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("menjeans")}>
+                Jeans
+              </Button>
+            </Link>
           </Flex>
         </Box>
       ) : (
         <Box></Box>
       )}
-       {isauth.status && isShown.status && isShown.id === "3" ? (
+      {isauth.status && isShown.status && isShown.id === "3" ? (
         <Box
           w={"100%"}
           h={120}
@@ -220,15 +284,27 @@ function Navbar() {
           border={"0px solid red"}
         >
           <Flex direction="column" alignItems="flex-start">
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("kidshirt")}>Shirt</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("kidtshirt")}>Tshirt</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("kidjeans")}>Jeans</Button></Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("kidshirt")}>
+                Shirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("kidtshirt")}>
+                Tshirt
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("kidjeans")}>
+                Jeans
+              </Button>
+            </Link>
           </Flex>
         </Box>
       ) : (
         <Box></Box>
       )}
-       {isauth.status && isShown.status && isShown.id === "4" ? (
+      {isauth.status && isShown.status && isShown.id === "4" ? (
         <Box
           w={"100%"}
           h={120}
@@ -242,15 +318,27 @@ function Navbar() {
           border={"0px solid red"}
         >
           <Flex direction="column" alignItems="flex-start">
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("sports")}>Sports</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("casual")}>casual</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("slipper")}>Slipper</Button></Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("sports")}>
+                Sports
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("casual")}>
+                casual
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("slipper")}>
+                Slipper
+              </Button>
+            </Link>
           </Flex>
         </Box>
       ) : (
         <Box></Box>
       )}
-       {isauth.status && isShown.status && isShown.id === "5" ? (
+      {isauth.status && isShown.status && isShown.id === "5" ? (
         <Box
           w={"100%"}
           h={120}
@@ -264,17 +352,28 @@ function Navbar() {
           border={"0px solid red"}
         >
           <Flex direction="column" alignItems="flex-start">
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("facewash")}>Facewash</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("haircare")}>Haircare</Button></Link>
-          <Link to="/products"><Button variant="ghost" onClick={()=>handledata("cream")}>Cream</Button></Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("facewash")}>
+                Facewash
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("haircare")}>
+                Haircare
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button variant="ghost" onClick={() => handledata("cream")}>
+                Cream
+              </Button>
+            </Link>
           </Flex>
         </Box>
       ) : (
         <Box></Box>
       )}
 
-
-{isauth.status && cartview ? (
+      {isauth.status && cartview ? (
         <Box
           w={"400px"}
           h={600}
@@ -284,10 +383,12 @@ function Navbar() {
           right={1}
           overflow="scroll"
         >
-        <Cart/>
+          <Cart />
         </Box>
-      ) :""}
-   
+      ) : (
+        ""
+      )}
+
       <Box
         h="10"
         display="flex"

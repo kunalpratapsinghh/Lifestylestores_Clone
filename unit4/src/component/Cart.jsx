@@ -1,32 +1,53 @@
-import { Box, Button, Flex, Grid, GridItem, Heading, Image, Stack, StackDivider } from '@chakra-ui/react';
+import { Button, Flex, Grid, GridItem, Heading, Image, Stack, StackDivider } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 function Cart() {
-    let [cartdata,setCartdata]=useState(JSON.parse(localStorage.getItem("cartdata1")) || [])
-    let navigate=useNavigate()
-    let sum=cartdata.reduce((a,b)=>a+(b.price*b.qty),0)
+    let xx=JSON.parse(localStorage.getItem("cartdata1")) || [];
 
+    let [cartdata,setCartdata]=useState(xx)
+    let navigate=useNavigate()
+    let sum=cartdata?.reduce((a,b)=>a+(b.price*b.qty),0)
+    console.log(sum,"sum")
+    
     const handleitem=(ele,value)=>{
         let newdata=cartdata.map(el=>{return(el.title===ele.title)?{...el,qty:el.qty+value}:el})
-        let x=  newdata.map(el=>{return(el.qty<0)?{...el,qty:0}:el})
-        setCartdata(x)
+        let x=  newdata.filter((el)=>el.qty!==0)
+      
         sum=cartdata.reduce((a,b)=>a+(b.price*b.qty),0)
+        localStorage.setItem("cartdata1",JSON.stringify(x))
+        setCartdata(x)
+   
     }
+
+
     const handledelete=(el)=>{
         let newdata=cartdata.filter((ele)=>ele.title!==el.title)
         setCartdata(newdata)
         sum=cartdata.reduce((a,b)=>a+(b.price*b.qty),0)
-    }
-    useEffect(() => {
-        localStorage.removeItem("cartdata1")
         localStorage.setItem("cartdata1",JSON.stringify(cartdata))
-        return()=>{
-            return
+        console.log(localStorage,"local")
+    }
+
+
+    useEffect(() => {
+        console.log(cartdata,"1")
+       
+        localStorage.setItem("cartdata1",JSON.stringify(cartdata))
+        
+
+        
+        return ()=>{
+           
         }
     }, [cartdata])
     
+
+        
+
+
+
   return (
     <Stack spacing={2} divider={<StackDivider borderColor='gray.200' />}>
         {cartdata.map((el,index)=>{
