@@ -7,7 +7,7 @@
              
              
 without login you will not be able to view any pages as all pages are private and need authentication;
-
+<p>A lifestyle store is a retail store selling a wide variety of product categories under a single brand. It is designed to associate a brand with one or another aspirational lifestyle. Lifestyle stores may include clothing, housewares, furniture, stationery, gifts, and so on.</p>
 
 <h3>Tech Stacks used </h3>
 
