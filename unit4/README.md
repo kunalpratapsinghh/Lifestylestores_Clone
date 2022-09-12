@@ -22,7 +22,7 @@ without login you will not be able to view any pages as all pages are private an
 <li>React</li>
 
 
-All the images and links are used from the original website to get a better experience of the website. We have also included the Github link of our project for your reference.
+All the images and links are used from the original website to get a better experience of the website. I have also included the Github link of our project for your reference.
 
 <h4>Landing Page</h4>
 
