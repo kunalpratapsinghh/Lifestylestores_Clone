@@ -1,4 +1,4 @@
-export let Data = {
+export const Data = {
   // 1 WOMEN
   womenshirt: [
     {

@@ -10,7 +10,7 @@ function Products() {
     const [mapingdata,setMapingdata] =useState([]);
     const {data}=useContext(Appcontext)
     const{handlecartdata}=useContext(Cartcontext)
-
+   
     let handlesort=(e)=>{
         let newdata=[...mapingdata]
         
@@ -57,9 +57,11 @@ function Products() {
     }
 
     useEffect(()=>{
-
+        console.log(Data,"1")
     },[mapingdata])
 useEffect(()=>{
+    console.log(Data,"2")
+
    setMapingdata(Data[data])
 },[data])
   return (

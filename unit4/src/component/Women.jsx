@@ -1,22 +1,10 @@
-import { AddIcon, PhoneIcon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
-  Center,
-  Container,
-  Divider,
-  Flex,
   Grid,
   GridItem,
   Heading,
   Image,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputLeftElement,
-  Spacer,
   StackDivider,
-  TagLeftIcon,
   Text,
   VStack,
 } from "@chakra-ui/react";

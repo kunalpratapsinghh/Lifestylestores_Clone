@@ -9,7 +9,7 @@ function Cart() {
     let [cartdata,setCartdata]=useState(xx)
     let navigate=useNavigate()
     let sum=cartdata?.reduce((a,b)=>a+(b.price*b.qty),0)
-    console.log(sum,"sum")
+   
     
     const handleitem=(ele,value)=>{
         let newdata=cartdata.map(el=>{return(el.title===ele.title)?{...el,qty:el.qty+value}:el})
@@ -23,23 +23,25 @@ function Cart() {
 
 
     const handledelete=(el)=>{
-        let newdata=cartdata.filter((ele)=>ele.title!==el.title)
+        let newdata=cartdata.map((ele)=>ele.title===el.title?{...ele,qty:1}:ele)
+            newdata=cartdata.filter((ele)=>ele.title!==el.title)
         setCartdata(newdata)
         sum=cartdata.reduce((a,b)=>a+(b.price*b.qty),0)
         localStorage.setItem("cartdata1",JSON.stringify(cartdata))
-        console.log(localStorage,"local")
+        
     }
 
 
     useEffect(() => {
-        console.log(cartdata,"1")
+      
        
-        localStorage.setItem("cartdata1",JSON.stringify(cartdata))
+        
         
 
         
         return ()=>{
-           
+            console.log("cleanup")
+            localStorage.setItem("cartdata1",JSON.stringify(cartdata))
         }
     }, [cartdata])
     
